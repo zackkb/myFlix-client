@@ -2,6 +2,8 @@ import React from "react";
 import axios from "axios";
 import "./main-view.scss";
 
+// Adding components
+
 import { RegistrationView } from "../registration-view/registration-view";
 import { LoginView } from "../login-view/login-view";
 import { MovieCard } from "../movie-card/movie-card";
@@ -14,6 +16,7 @@ export class MainView extends React.Component {
     this.state = {
       movies: [],
       selectedMovie: null,
+      registered: null,
       user: null,
     };
   }
@@ -32,16 +35,16 @@ export class MainView extends React.Component {
   }
 
   /*When a movie is clicked, this function is invoked and updates the state of the `selectedMovie` *property to that movie*/
-  setSelectedMovie(movie) {
+  setSelectedMovie(newSelectedMovie) {
     this.setState({
-      selectedMovie: movie,
+      selectedMovie: newSelectedMovie,
     });
   }
 
   /* When a user successfully registers */
-  onRegistration(register) {
+  onRegister(registered) {
     this.setState({
-      register,
+      registered,
     });
   }
 
@@ -53,25 +56,30 @@ export class MainView extends React.Component {
   }
 
   render() {
-    const { movies, selectedMovie, user, register } = this.state;
+    const { movies, selectedMovie, user, registered } = this.state;
 
-    if (!register)
+    //forcing a registration form for testing
+    if (registered) {
+      return <RegistrationView onRegister={(bool) => this.onRegister(bool)} />;
+    }
+
+    //if user is no logged in - force a login form
+    if (!user) {
       return (
-        <RegistrationView
-          onRegistration={(register) => this.onRegistration(register)}
+        <LoginView
+          onLoggedIn={(user) => this.onLoggedIn(user)}
+          onRegister={(bool) => this.onRegister(bool)}
         />
       );
+    }
 
-    /* If there is no user, the LoginView is rendered. If there is a user logged in, the user details are *passed as a prop to the LoginView*/
-    if (!user)
-      return <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />;
+    if (movies.length === 0)
+      return <div className="main-view">The list is empty</div>;
 
-    // Before the movies have been loaded
-    if (movies.length === 0) return <div className="main-view" />;
-
+    //if no movie is selected show the list -
+    //if a movie is selected show the Movie View details
     return (
-      <div className="main-view">
-        {/*If the state of `selectedMovie` is not null, that selected movie will be returned otherwise, all *movies will be returned*/}
+      <div className="main-vew">
         {selectedMovie ? (
           <MovieView
             movie={selectedMovie}
@@ -84,8 +92,8 @@ export class MainView extends React.Component {
             <MovieCard
               key={movie._id}
               movie={movie}
-              onMovieClick={(newSelectedMovie) => {
-                this.setSelectedMovie(newSelectedMovie);
+              onMovieClick={(movie) => {
+                this.setSelectedMovie(movie);
               }}
             />
           ))
