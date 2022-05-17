@@ -9,12 +9,16 @@ export class MovieCard extends React.Component {
     const { movie, onMovieClick } = this.props;
 
     return (
-      <Card>
-        <Card.Img variant="top" src={movie.imageURL} />
+      <Card id="movie-card">
+        <Card.Img id="movie-image" variant="top" src={movie.imgURL} />
         <Card.Body>
-          <Card.Title>{movie.Title}</Card.Title>
-          <Card.Text>{movie.Description}</Card.Text>
-          <Button onClick={() => onMovieClick(movie)} variant="link">
+          <Card.Title id="movie-title">{movie.Title}</Card.Title>
+          <Card.Text id="movie-genre">{movie.Genre.Name}</Card.Text>
+          <Button
+            id="open-button"
+            onClick={() => onMovieClick(movie)}
+            variant="link"
+          >
             Open
           </Button>
         </Card.Body>
@@ -22,7 +26,6 @@ export class MovieCard extends React.Component {
     );
   }
 }
-
 MovieCard.propTypes = {
   movie: PropTypes.shape({
     Title: PropTypes.string.isRequired,

@@ -20,7 +20,6 @@ export function RegistrationView(props) {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(username, password, email, birthday);
-
     props.onRegistration(username);
   };
 
@@ -31,7 +30,7 @@ export function RegistrationView(props) {
           <CardGroup>
             <Card>
               <Card.Body>
-                <Card.Title>Please register for myFlix!</Card.Title>
+                <Card.Title>Register to view myFlix</Card.Title>
                 <Form>
                   <Form.Group>
                     <Form.Label>Username</Form.Label>
@@ -67,17 +66,6 @@ export function RegistrationView(props) {
                     />
                   </Form.Group>
 
-                  <Form.Group>
-                    <Form.Label>Birthday</Form.Label>
-                    <Form.Control
-                      type="text"
-                      value={birthday}
-                      onChange={(e) => setBirthday(e.target.value)}
-                      required
-                      placeholder="Enter your birthday"
-                    />
-                  </Form.Group>
-
                   <Button
                     variant="primary"
                     type="submit"
@@ -103,4 +91,5 @@ RegistrationView.propTypes = {
   }),
   onRegistration: PropTypes.func.isRequired,
 };
+
 export default RegistrationView;

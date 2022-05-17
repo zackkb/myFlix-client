@@ -9,33 +9,27 @@ export class MovieView extends React.Component {
     return (
       <div className="movie-view">
         <div className="movie-poster">
-          <img src={movie.imageURL} />
+          <img id="movie__img" src={movie.imgURL} />
         </div>
+        <br />
         <div className="movie-title">
-          <span className="label">Title: </span>
-          <span className="value">{movie.Title}</span>
+          <span className="movie__title">{movie.Title}</span>
         </div>
+        <br />
         <div className="movie-description">
-          <span className="label">Description: </span>
-          <span className="value">{movie.Description}</span>
+          <span className="movie__header">Description: </span>
+          <span className="movie__text">{movie.Description}</span>
         </div>
         <div className="movie-genre">
-          <span className="genre">Genre: </span>
-          <span className="value">{movie.Genre.Name}</span>
-        </div>
-        <div className="genre-description">
-          <span className="genre">Description: </span>
-          <span className="value">{movie.Genre.Description}</span>
+          <span className="movie__header">Genre: </span>
+          <span className="movie__text">{movie.Genre.Name}</span>
         </div>
         <div className="movie-director">
-          <span className="director">Director: </span>
-          <span className="value">{movie.Director.Name}</span>
-        </div>
-        <div className="director-bio">
-          <span className="director">Bio: </span>
-          <span className="value">{movie.Director.Bio}</span>
+          <span className="movie__header">Director: </span>
+          <span className="movie__text">{movie.Director.Name}</span>
         </div>
         <button
+          id="back-button"
           onClick={() => {
             onBackClick(null);
           }}
@@ -46,7 +40,6 @@ export class MovieView extends React.Component {
     );
   }
 }
-
 MovieView.propTypes = {
   movie: PropTypes.shape({
     Title: PropTypes.string.isRequired,
