@@ -1,6 +1,8 @@
 import React from "react";
 import axios from "axios";
 import "./main-view.scss";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
 // Adding components
 
@@ -79,21 +81,25 @@ export class MainView extends React.Component {
     //if no movie is selected show the list -
     //if a movie is selected show the Movie View details
     return (
-      <div className="main-vew">
+      <div className="main-view">
         {selectedMovie ? (
-          <MovieView
-            movie={selectedMovie}
-            onBackClick={(newSelectedMovie) => {
-              this.setSelectedMovie(newSelectedMovie);
-            }}
-          />
+          <Row className="justify-content-md-center">
+            <Col md={8}>
+              <MovieView
+                movie={selectedMovie}
+                onBackClick={(newSelectedMovie) => {
+                  this.setSelectedMovie(newSelectedMovie);
+                }}
+              />
+            </Col>
+          </Row>
         ) : (
           movies.map((movie) => (
             <MovieCard
               key={movie._id}
               movie={movie}
-              onMovieClick={(movie) => {
-                this.setSelectedMovie(movie);
+              onMovieClick={(newSelectedMovie) => {
+                this.setSelectedMovie(newSelectedMovie);
               }}
             />
           ))
