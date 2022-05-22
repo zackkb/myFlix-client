@@ -48,3 +48,5 @@ GenreView.propTypes = {
     }).isRequired,
   }),
 };
+
+export default GenreView;

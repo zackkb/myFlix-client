@@ -1,11 +1,9 @@
 import React from "react";
 import { Navbar, Container, Nav, Button } from "react-bootstrap";
 import "./navbar-view.scss";
-import { NavLink } from "react-router-dom";
-import { Link } from "react-router-dom";
 
-export function NavbarView({ user }) {
-  const onLoggedOut = () => {
+export function Menubar({ user }) {
+  const onLogOut = () => {
     localStorage.clear();
     window.open("/", "_self");
   };
@@ -25,37 +23,31 @@ export function NavbarView({ user }) {
     <Navbar
       className="main-nav"
       sticky="top"
-      bg="dark"
+      bg="light"
       expand="lg"
-      variant="dark"
+      variant="light"
     >
-      <Container>
-        <Navbar.Brand className="navbar-logo" href="/">
-          myFlix
-        </Navbar.Brand>
-        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-        <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav className="ml-auto">
-            {isAuth() && (
-              <Nav.Link as={Link} to="/users/username">
-                {user}
-              </Nav.Link>
-            )}
-            {isAuth() && (
-              <Button
-                variant="link"
-                onClick={() => {
-                  onLoggedOut();
-                }}
-              >
-                Logout
-              </Button>
-            )}
-            {!isAuth() && <Nav.Link href="/">Sign-in</Nav.Link>}
-            {!isAuth() && <Nav.Link href="/register">Register</Nav.Link>}
-          </Nav>
-        </Navbar.Collapse>
-      </Container>
+      <Navbar.Brand className="navbar-logo">myFlix</Navbar.Brand>
+      <Navbar.Toggle aria-controls="responsive-navba-nav" />
+      <Navbar.Collapse id="responsive-navbar-nav">
+        <Nav className="ml-auto">
+          {isAuth() && <Nav.Link href={`/`}>myFlix</Nav.Link>}
+
+          {isAuth() && <Nav.Link href={`/users/${user}`}>Profile</Nav.Link>}
+          {isAuth() && (
+            <Button
+              variant="link"
+              onClick={() => {
+                onLogOut();
+              }}
+            >
+              Log Out
+            </Button>
+          )}
+          {!isAuth() && <Nav.Link href="/">Sign In</Nav.Link>}
+          {!isAuth() && <Nav.Link href="/register">Register</Nav.Link>}
+        </Nav>
+      </Navbar.Collapse>
     </Navbar>
   );
 }
