@@ -1,8 +1,8 @@
 import React from "react";
+import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 import axios from "axios";
 import "./main-view.scss";
 import { Col, Row, Container } from "react-bootstrap";
-import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 
 // Adding components
 
@@ -71,6 +71,7 @@ export class MainView extends React.Component {
 
   render() {
     const { movies, user } = this.state;
+
     return (
       <Router>
         <NavbarView user={user} />
