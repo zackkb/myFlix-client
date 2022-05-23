@@ -12,12 +12,12 @@ export class MovieView extends React.Component {
       <Container>
         <Row>
           <Col>
-            <Card id="movie-view">
+            <Card className="movie-view">
               <Card.Body>
                 <Card.Img
                   id="movie-view-image"
                   variant="top"
-                  src={movie.ImagePath}
+                  src={movie.imgURL}
                 />
                 <Card.Title id="movie-title" className="movie-title">
                   {movie.Title}
@@ -25,6 +25,7 @@ export class MovieView extends React.Component {
                 <Card.Text id="movie-description" className="movie-description">
                   {movie.Description}
                 </Card.Text>
+
                 <Link to={`/director/${movie.Director.Name}`}>
                   <Button
                     variant="link"
@@ -34,6 +35,7 @@ export class MovieView extends React.Component {
                     Director: {movie.Director.Name}
                   </Button>
                 </Link>
+
                 <Link to={`/genre/${movie.Genre.Name}`}>
                   <Button
                     variant="link"
@@ -53,9 +55,6 @@ export class MovieView extends React.Component {
             >
               Back
             </Button>
-            <Button id="movie-view-button" onClick={() => {}}>
-              Add to favorites
-            </Button>
           </Col>
         </Row>
       </Container>
@@ -67,17 +66,17 @@ MovieView.propTypes = {
   movie: PropTypes.shape({
     Title: PropTypes.string.isRequired,
     Description: PropTypes.string.isRequired,
+    imgURL: PropTypes.string.isRequired,
+
     Genre: PropTypes.shape({
       Name: PropTypes.string.isRequired,
       Description: PropTypes.string.isRequired,
-    }),
+    }).isRequired,
+
     Director: PropTypes.shape({
       Name: PropTypes.string.isRequired,
       Bio: PropTypes.string.isRequired,
-      Birth: PropTypes.string.isRequired,
-    }),
-    Actors: PropTypes.array,
-    ImagePath: PropTypes.string.isRequired,
+    }).isRequired,
   }).isRequired,
 };
 
