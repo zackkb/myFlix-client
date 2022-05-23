@@ -40,6 +40,7 @@ export class MainView extends React.Component {
       });
   }
 
+  // When user is logged in (and token is present), show list of movies
   componentDidMount() {
     let accessToken = localStorage.getItem("token");
     if (accessToken !== null) {
@@ -95,6 +96,7 @@ export class MainView extends React.Component {
                 ));
               }}
             />
+
             <Route
               path="/register"
               render={() => {
@@ -106,6 +108,7 @@ export class MainView extends React.Component {
                 );
               }}
             />
+
             <Route
               path="/movies/:movieId"
               render={({ match, history }) => {
@@ -126,6 +129,7 @@ export class MainView extends React.Component {
                 );
               }}
             />
+
             <Route
               exact
               path="/director/:name"
@@ -151,6 +155,7 @@ export class MainView extends React.Component {
                 );
               }}
             />
+
             <Route
               exact
               path="/genre/:name"
