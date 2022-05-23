@@ -1,5 +1,10 @@
 import React from "react";
-import { BrowserRouter, Routes, Route, Redirect } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Redirect,
+} from "react-router-dom";
 import axios from "axios";
 import "./main-view.scss";
 import { Col, Row, Container } from "react-bootstrap";
@@ -74,7 +79,7 @@ export class MainView extends React.Component {
     const { movies, user } = this.state;
 
     return (
-      <BrowserRouter>
+      <Router>
         <NavbarView user={user} />
         <Container>
           <Row className="main-view justify-content-md-center">
@@ -238,7 +243,7 @@ export class MainView extends React.Component {
             </Routes>
           </Row>
         </Container>
-      </BrowserRouter>
+      </Router>
     );
   }
 }
