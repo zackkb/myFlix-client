@@ -1013,28 +1013,21 @@ var _reactDefault = parcelHelpers.interopDefault(_react);
 var _client = require("react-dom/client");
 var _reactBootstrap = require("react-bootstrap");
 var _mainView = require("./components/main-view/main-view");
-var _reactRouterDom = require("react-router-dom");
 // import { MovieView } from "./components/movie-view/movie-view";
 // Import statement to indicate that you need to bundle ./index.scss;
 var _indexScss = require("./index.scss");
 // Main component (will eventually use all the others)
 class MyFlixApplication extends _reactDefault.default.Component {
     render() {
-        return /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactRouterDom.BrowserRouter, {
-            children: /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.Container, {
-                children: /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_mainView.MainView, {}, void 0, false, {
-                    fileName: "src/index.jsx",
-                    lineNumber: 18,
-                    columnNumber: 11
-                }, this)
-            }, void 0, false, {
+        return /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.Container, {
+            children: /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_mainView.MainView, {}, void 0, false, {
                 fileName: "src/index.jsx",
-                lineNumber: 17,
+                lineNumber: 16,
                 columnNumber: 9
             }, this)
         }, void 0, false, {
             fileName: "src/index.jsx",
-            lineNumber: 16,
+            lineNumber: 15,
             columnNumber: 7
         }, this);
     }
@@ -1049,7 +1042,7 @@ _client.createRoot(container).render(/*#__PURE__*/ _reactDefault.default.createE
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-dom/client":"lOjBx","./components/main-view/main-view":"4gflv","./index.scss":"lJZlQ","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","react-bootstrap":"3AD9A","react-router-dom":"fdOAw"}],"iTorj":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-dom/client":"lOjBx","./components/main-view/main-view":"4gflv","./index.scss":"lJZlQ","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","react-bootstrap":"3AD9A"}],"iTorj":[function(require,module,exports) {
 'use strict';
 module.exports = require('./cjs/react-jsx-dev-runtime.development.js');
 
@@ -25208,7 +25201,6 @@ class MainView extends _reactDefault.default.Component {
                         children: /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactRouterDom.Routes, {
                             children: [
                                 /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactRouterDom.Route, {
-                                    exact: true,
                                     path: "/",
                                     element: /*#__PURE__*/ _jsxDevRuntime.jsxDEV(MainView, {}, void 0, false, void 0, void 0),
                                     render: ()=>{
@@ -25234,7 +25226,6 @@ class MainView extends _reactDefault.default.Component {
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactRouterDom.Route, {
-                                    exact: true,
                                     path: "/register",
                                     element: /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_registrationView.RegistrationView, {}, void 0, false, void 0, void 0),
                                     render: ()=>{
@@ -25247,11 +25238,10 @@ class MainView extends _reactDefault.default.Component {
                                     }
                                 }, void 0, false, {
                                     fileName: "src/components/main-view/main-view.jsx",
-                                    lineNumber: 109,
+                                    lineNumber: 108,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactRouterDom.Route, {
-                                    exact: true,
                                     path: "/movies/:movieId",
                                     element: /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_movieView.MovieView, {}, void 0, false, void 0, void 0),
                                     render: ({ match , history  })=>{
@@ -25274,11 +25264,10 @@ class MainView extends _reactDefault.default.Component {
                                     }
                                 }, void 0, false, {
                                     fileName: "src/components/main-view/main-view.jsx",
-                                    lineNumber: 123,
+                                    lineNumber: 121,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactRouterDom.Route, {
-                                    exact: true,
                                     path: "/director/:name",
                                     element: /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_directorView.DirectorView, {}, void 0, false, void 0, void 0),
                                     render: ({ match , history  })=>{
@@ -25301,11 +25290,10 @@ class MainView extends _reactDefault.default.Component {
                                     }
                                 }, void 0, false, {
                                     fileName: "src/components/main-view/main-view.jsx",
-                                    lineNumber: 150,
+                                    lineNumber: 147,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactRouterDom.Route, {
-                                    exact: true,
                                     path: "/genre/:name",
                                     element: /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_genreView.GenreView, {}, void 0, false, void 0, void 0),
                                     render: ({ match , history  })=>{
@@ -25328,11 +25316,10 @@ class MainView extends _reactDefault.default.Component {
                                     }
                                 }, void 0, false, {
                                     fileName: "src/components/main-view/main-view.jsx",
-                                    lineNumber: 179,
+                                    lineNumber: 175,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactRouterDom.Route, {
-                                    exact: true,
                                     path: "/users/:username",
                                     element: /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_profileView.ProfileView, {}, void 0, false, void 0, void 0),
                                     render: ({ history , match  })=>{
@@ -25352,7 +25339,7 @@ class MainView extends _reactDefault.default.Component {
                                     }
                                 }, void 0, false, {
                                     fileName: "src/components/main-view/main-view.jsx",
-                                    lineNumber: 207,
+                                    lineNumber: 202,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactRouterDom.Route, {
@@ -25370,7 +25357,7 @@ class MainView extends _reactDefault.default.Component {
                                     }
                                 }, void 0, false, {
                                     fileName: "src/components/main-view/main-view.jsx",
-                                    lineNumber: 229,
+                                    lineNumber: 223,
                                     columnNumber: 15
                                 }, this)
                             ]

@@ -3,7 +3,6 @@ import React from "react";
 import { createRoot } from "react-dom/client";
 import { Container } from "react-bootstrap";
 import { MainView } from "./components/main-view/main-view";
-import { BrowserRouter as Router } from "react-router-dom";
 // import { MovieView } from "./components/movie-view/movie-view";
 
 // Import statement to indicate that you need to bundle ./index.scss;
@@ -13,11 +12,9 @@ import "./index.scss";
 class MyFlixApplication extends React.Component {
   render() {
     return (
-      <Router>
-        <Container>
-          <MainView />
-        </Container>
-      </Router>
+      <Container>
+        <MainView />
+      </Container>
     );
   }
 }

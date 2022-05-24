@@ -85,7 +85,6 @@ export class MainView extends React.Component {
           <Row className="main-view justify-content-md-center">
             <Routes>
               <Route
-                exact
                 path="/"
                 element={<MainView />}
                 render={() => {
@@ -107,7 +106,6 @@ export class MainView extends React.Component {
               />
 
               <Route
-                exact
                 path="/register"
                 element={<RegistrationView />}
                 render={() => {
@@ -121,7 +119,6 @@ export class MainView extends React.Component {
               />
 
               <Route
-                exact
                 path="/movies/:movieId"
                 element={<MovieView />}
                 render={({ match, history }) => {
@@ -148,7 +145,6 @@ export class MainView extends React.Component {
               />
 
               <Route
-                exact
                 path="/director/:name"
                 element={<DirectorView />}
                 render={({ match, history }) => {
@@ -177,7 +173,6 @@ export class MainView extends React.Component {
               />
 
               <Route
-                exact
                 path="/genre/:name"
                 element={<GenreView />}
                 render={({ match, history }) => {
@@ -205,7 +200,6 @@ export class MainView extends React.Component {
               />
 
               <Route
-                exact
                 path="/users/:username"
                 element={<ProfileView />}
                 render={({ history, match }) => {
