@@ -85,6 +85,7 @@ export class MainView extends React.Component {
           <Row className="main-view justify-content-md-center">
             <Routes>
               <Route
+                exact
                 path="/"
                 element={<MainView />}
                 render={() => {
@@ -202,7 +203,7 @@ export class MainView extends React.Component {
               <Route
                 path="/users/:username"
                 element={<ProfileView />}
-                render={({ history, match }) => {
+                render={({ history }) => {
                   if (!user)
                     return (
                       <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />
@@ -214,21 +215,6 @@ export class MainView extends React.Component {
                         history={history}
                         movies={movies}
                         user={user}
-                      />
-                    </Col>
-                  );
-                }}
-              />
-
-              <Route
-                path={"/user-update/${user}"}
-                render={({ match, history }) => {
-                  if (!user) return <Redirect to="/" />;
-                  return (
-                    <Col>
-                      <UserUpdate
-                        user={user}
-                        onBackClick={() => history.goBack()}
                       />
                     </Col>
                   );
