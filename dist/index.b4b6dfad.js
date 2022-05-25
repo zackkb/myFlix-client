@@ -32132,6 +32132,19 @@ class MainView extends _reactDefault.default.Component {
                                     fileName: "src/components/main-view/main-view.jsx",
                                     lineNumber: 197,
                                     columnNumber: 15
+                                }, this),
+                                /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactRouterDom.Route, {
+                                    path: "/login",
+                                    element: /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_loginView.LoginView, {}, void 0, false, void 0, void 0),
+                                    render: ()=>{
+                                        return /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.Col, {
+                                            children: /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_loginView.LoginView, {}, void 0, false, void 0, void 0)
+                                        }, void 0, false, void 0, void 0);
+                                    }
+                                }, void 0, false, {
+                                    fileName: "src/components/main-view/main-view.jsx",
+                                    lineNumber: 217,
+                                    columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
@@ -37948,8 +37961,7 @@ LoginView.propTypes = {
     user: _propTypesDefault.default.shape({
         Username: _propTypesDefault.default.string.isRequired,
         Password: _propTypesDefault.default.string.isRequired
-    }),
-    onLoggedIn: _propTypesDefault.default.func.isRequired
+    })
 };
 exports.default = LoginView;
 var _c;

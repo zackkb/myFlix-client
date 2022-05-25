@@ -214,6 +214,17 @@ export class MainView extends React.Component {
                   );
                 }}
               />
+              <Route
+                path="/login"
+                element={<LoginView />}
+                render={() => {
+                  return (
+                    <Col>
+                      <LoginView />
+                    </Col>
+                  );
+                }}
+              />
             </Routes>
           </Row>
         </Container>
