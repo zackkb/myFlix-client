@@ -1,7 +1,6 @@
 import React from "react";
 import { Navbar, Container, Nav, Button } from "react-bootstrap";
 import "./navbar-view.scss";
-// import { NavLink } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 export function NavbarView({ user }) {
@@ -51,7 +50,7 @@ export function NavbarView({ user }) {
                 Logout
               </Button>
             )}
-            {!isAuth() && <Nav.Link href="/">Sign-in</Nav.Link>}
+            {!isAuth() && <Nav.Link href="/login">Sign-in</Nav.Link>}
             {!isAuth() && <Nav.Link href="/register">Register</Nav.Link>}
           </Nav>
         </Navbar.Collapse>
