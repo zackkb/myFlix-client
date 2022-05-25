@@ -32137,8 +32137,11 @@ class MainView extends _reactDefault.default.Component {
                                     path: "/login",
                                     element: /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_loginView.LoginView, {}, void 0, false, void 0, void 0),
                                     render: ()=>{
-                                        return /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.Col, {
-                                            children: /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_loginView.LoginView, {}, void 0, false, void 0, void 0)
+                                        if (user1) return /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactRouterDom.Redirect, {
+                                            to: "/"
+                                        }, void 0, false, void 0, void 0);
+                                        return /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_loginView.LoginView, {
+                                            onLoggedIn: (data)=>this.onLoggedIn(data)
                                         }, void 0, false, void 0, void 0);
                                     }
                                 }, void 0, false, {

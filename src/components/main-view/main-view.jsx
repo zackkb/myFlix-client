@@ -218,10 +218,11 @@ export class MainView extends React.Component {
                 path="/login"
                 element={<LoginView />}
                 render={() => {
+                  if (user) {
+                    return <Redirect to="/" />;
+                  }
                   return (
-                    <Col>
-                      <LoginView />
-                    </Col>
+                    <LoginView onLoggedIn={(data) => this.onLoggedIn(data)} />
                   );
                 }}
               />
