@@ -23,6 +23,7 @@ export function RegistrationView(props) {
   const [usernameErr, setUsernameErr] = useState("");
   const [passwordErr, setPasswordErr] = useState("");
   const [emailErr, setEmailErr] = useState("");
+  const [birthdayErr, setBirthdayErr] = useState("");
 
   // Validate user inputs
   const validate = () => {
@@ -38,7 +39,7 @@ export function RegistrationView(props) {
       setPasswordErr("Password Required");
       isReq = false;
     } else if (password.length < 6) {
-      setPassword("Password must be 6 characters long");
+      setPassword("Password must be at least 6 characters long");
       isReq = false;
     }
     if (!email) {
@@ -110,7 +111,7 @@ export function RegistrationView(props) {
                       onChange={(e) => setPassword(e.target.value)}
                       required
                       placeholder="Enter a Password"
-                      minLength="8"
+                      minLength="6"
                     />
                     {passwordErr && <p>{passwordErr}</p>}
                   </Form.Group>
@@ -125,6 +126,20 @@ export function RegistrationView(props) {
                       placeholder="Enter your email adress"
                     />
                     {emailErr && <p>{emailErr}</p>}
+                  </Form.Group>
+
+                  <Form.Group>
+                    <Form.Label id="registration-form-label">
+                      Birthday
+                    </Form.Label>
+                    <Form.Control
+                      type="date"
+                      value={birthday}
+                      onChange={(e) => setBirthday(e.target.value)}
+                      required
+                      placeholder="DD-MM-YYYY"
+                    />
+                    {birthdayErr && <p>{birthdayErr}</p>}
                   </Form.Group>
 
                   <Button
@@ -150,6 +165,7 @@ RegistrationView.propTypes = {
     Username: PropTypes.string.isRequired,
     Password: PropTypes.string.isRequired,
     Email: PropTypes.string.isRequired,
+    Birthday: PropTypes.string.isRequired,
   }),
 };
 
