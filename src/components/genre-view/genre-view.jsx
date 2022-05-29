@@ -1,52 +1,57 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "./genre-view.scss";
-import { Container, Row, Col, Button } from "react-bootstrap";
+import { Button, Card, Container, Col } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 export class GenreView extends React.Component {
   render() {
-    const { genre, onBackClick } = this.props;
+    const { genre, movie, onBackClick } = this.props;
+
     return (
-      <Container className="genreContainer">
-        <Row>
-          <Col>
-            <div className="genre-view">
-              <div className="genre-name">
-                <span className="name">Name:</span>
-                <span className="value">{genre.Name}</span>
-              </div>
+      <Card>
+        <Card.Body>
+          <Card.Title>Genre</Card.Title>
+          <Container className="genre-view">
+            <Col className="d-sm-flex justify-content-between justify-content-lg-start">
+              <Card.Text className="label titles">Title: </Card.Text>
+              <span className="movie-director-bio card-text  ml-3 ">
+                {genre.Name}
+              </span>
+            </Col>
 
-              <div className="genre-description">
-                <span className="description">Description:</span>
-                <span className="value">{genre.Description}</span>
-              </div>
-
-              <div className="genre-button-div">
-                <Button
-                  className="genre-button"
-                  variant="secondary"
-                  onClick={() => {
-                    onBackClick(null);
-                  }}
-                >
-                  Back
-                </Button>
-              </div>
-            </div>
-          </Col>
-        </Row>
-      </Container>
+            <Col className="d-sm-flex justify-content-between justify-content-lg-start">
+              <Card.Text className="label titles">Description: </Card.Text>
+              <span className="movie-director-bio card-text  ml-3 ">
+                {genre.Description}
+              </span>
+            </Col>
+          </Container>
+          <Button
+            className="custom-btn"
+            type="submit"
+            onClick={() => {
+              onBackClick();
+            }}
+          >
+            Go back
+          </Button>
+          <p></p>
+          <Link to={`/`}>
+            <Button className="custom-btn" type="submit">
+              Back to List
+            </Button>
+          </Link>
+        </Card.Body>
+      </Card>
     );
   }
 }
 
 GenreView.propTypes = {
-  movie: PropTypes.shape({
-    Genre: PropTypes.shape({
-      Name: PropTypes.string.isRequired,
-      Description: PropTypes.string.isRequired,
-    }).isRequired,
-  }),
+  genre: PropTypes.shape({
+    Name: PropTypes.string.isRequired,
+    Description: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default GenreView;

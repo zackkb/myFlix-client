@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "./director-view.scss";
 
+import "./director-view.scss";
 import { Container, Row, Col, Button } from "react-bootstrap";
 
 export class DirectorView extends React.Component {
@@ -57,7 +57,8 @@ DirectorView.propTypes = {
     Director: PropTypes.shape({
       Name: PropTypes.string.isRequired,
       Bio: PropTypes.string.isRequired,
-      BirthYear: PropTypes.number.isRequired,
+      Birth: PropTypes.number.isRequired,
+      Death: PropTypes.number.isRequired,
     }).isRequired,
   }),
 };
