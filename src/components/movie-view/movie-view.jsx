@@ -1,7 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import "./movie-view.scss";
-import { Card, Col, Container, Row, Button } from "react-bootstrap";
+
+import { Col, Row, Button, Badge } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 export class MovieView extends React.Component {
@@ -9,55 +10,56 @@ export class MovieView extends React.Component {
     const { movie, onBackClick } = this.props;
 
     return (
-      <Container>
-        <Row>
-          <Col>
-            <Card className="movie-view">
-              <Card.Body>
-                <Card.Img
-                  id="movie-view-image"
-                  variant="top"
-                  src={movie.imgURL}
-                />
-                <Card.Title id="movie-title" className="movie-title">
-                  {movie.Title}
-                </Card.Title>
-                <Card.Text id="movie-description" className="movie-description">
-                  {movie.Description}
-                </Card.Text>
+      <>
+        <div>
+          <Button
+            variant="outline-light"
+            onClick={() => {
+              onBackClick();
+            }}
+          >
+            Back
+          </Button>
+        </div>
 
-                <Link to={`/director/${movie.Director.Name}`}>
-                  <Button
-                    variant="link"
-                    id="movie-director"
-                    className="movie-director"
-                  >
-                    Director: {movie.Director.Name}
-                  </Button>
-                </Link>
+        <div className="movie-title">
+          <h1 className="display-4">{movie.Title}</h1>
+        </div>
+        <div className="movie-img text-left">
+          <img src={movie.imgURL} width="350" className="img-fluid" />
+        </div>
 
-                <Link to={`/genre/${movie.Genre.Name}`}>
-                  <Button
-                    variant="link"
-                    id="movie-genre"
-                    className="movie-gerne"
-                  >
-                    Genre: {movie.Genre.Name}
-                  </Button>
-                </Link>
-              </Card.Body>
-            </Card>
-            <Button
-              id="movie-view-button"
-              onClick={() => {
-                onBackClick();
-              }}
-            >
-              Back
-            </Button>
-          </Col>
-        </Row>
-      </Container>
+        <div>
+          <Link to={`/genre/${movie.Genre.Name}`} className="d-inline-flex">
+            <Badge pill bg="light" text="dark">
+              {movie.Genre.Name}
+            </Badge>
+          </Link>
+        </div>
+        <br></br>
+        <div>
+          Director:{" "}
+          <Link
+            to={`/director/${movie.Director.Name}`}
+            className="d-inline-flex"
+          >
+            {movie.Director.Name}
+          </Link>
+        </div>
+
+        <br />
+        <div>
+          <span className="value">{movie.Description}</span>
+        </div>
+        <br></br>
+        <div>
+          <span className="description">Released: {movie.Year}</span>
+        </div>
+        <br></br>
+        <Link to={"/"}>
+          <Button variant="dark">Back to list</Button>
+        </Link>
+      </>
     );
   }
 }
@@ -73,7 +75,7 @@ MovieView.propTypes = {
       Name: PropTypes.string.isRequired,
     }),
     imgURL: PropTypes.string.isRequired,
+    Year: PropTypes.string.isRequired,
   }).isRequired,
+  onBackClick: PropTypes.func.isRequired,
 };
-
-export default MovieView;

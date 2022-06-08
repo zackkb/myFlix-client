@@ -3,7 +3,9 @@ import { Navbar, Container, Nav, Button } from "react-bootstrap";
 import "./navbar-view.scss";
 import { Link } from "react-router-dom";
 
-export function NavbarView({ user }) {
+export function NavbarView(props) {
+  const { user } = props;
+
   const onLoggedOut = () => {
     localStorage.clear();
     window.open("/", "_self");
@@ -21,42 +23,27 @@ export function NavbarView({ user }) {
   };
 
   return (
-    <Navbar
-      className="main-nav"
-      sticky="top"
-      bg="dark"
-      expand="lg"
-      variant="dark"
-    >
+    <Navbar bg="dark" variant="dark" className="mb-3">
       <Container>
-        <Navbar.Brand className="navbar-logo" href="/">
+        <Navbar.Brand as={Link} to={"/"}>
           myFlix
         </Navbar.Brand>
-        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-        <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav className="ml-auto">
-            {isAuth() && (
-              <Nav.Link as={Link} to="/users/username">
-                {user}
-              </Nav.Link>
-            )}
-            {isAuth() && (
-              <Button
-                variant="link"
-                onClick={() => {
-                  onLoggedOut();
-                }}
-              >
-                Logout
-              </Button>
-            )}
-            {!isAuth() && <Nav.Link href="/login">Sign-in</Nav.Link>}
-            {!isAuth() && <Nav.Link href="/register">Register</Nav.Link>}
+        {isAuth() && user && (
+          <Nav className="me-auto">
+            <Nav.Link as={Link} to={`/users/${user.Username}`}>
+              Profile
+            </Nav.Link>
+            <Button
+              variant="outline-primary"
+              onClick={() => {
+                onLoggedOut();
+              }}
+            >
+              Logout
+            </Button>
           </Nav>
-        </Navbar.Collapse>
+        )}
       </Container>
     </Navbar>
   );
 }
-
-export default NavbarView;

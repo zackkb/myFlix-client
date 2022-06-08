@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
+import { connect } from "react-redux";
 import axios from "axios";
 import "./login-view.scss";
 import {
@@ -56,24 +57,26 @@ export function LoginView(props) {
         })
         .catch((response) => {
           console.error(response);
-          //console.log('no such user')
         });
     }
   };
 
   return (
-    <Container id="login-form">
+    <Container id="loginContainer">
       <Row>
         <Col>
           <CardGroup>
-            <Card id="login-card">
+            <Card id="loginCard">
               <Card.Body>
-                <Card.Title id="login-card-title">
-                  Please login to use myFlix!
+                <Card.Title className="text-center">
+                  Welcome to myFlix!
                 </Card.Title>
+                <Card.Subtitle className="mb-2 text-muted text-center">
+                  Please Login to Continue
+                </Card.Subtitle>
                 <Form>
                   <Form.Group controlId="formUsername">
-                    <Form.Label id="login-form-label">Username</Form.Label>
+                    <Form.Label>Username</Form.Label>
                     <Form.Control
                       type="text"
                       onChange={(e) => setUsername(e.target.value)}
@@ -82,7 +85,7 @@ export function LoginView(props) {
                     {usernameErr && <p>{usernameErr}</p>}
                   </Form.Group>
                   <Form.Group controlId="formPassword">
-                    <Form.Label id="login-form-label">Password</Form.Label>
+                    <Form.Label>Password</Form.Label>
                     <Form.Control
                       type="password"
                       onChange={(e) => setPassword(e.target.value)}
@@ -91,7 +94,7 @@ export function LoginView(props) {
                     {passwordErr && <p>{passwordErr}</p>}
                   </Form.Group>
                   <Button
-                    id="login-button"
+                    id="loginButton"
                     variant="primary"
                     type="submit"
                     onClick={handleSubmit}
@@ -102,7 +105,7 @@ export function LoginView(props) {
                 <Card.Text>Not registered?</Card.Text>
                 <div id="register-container">
                   <Link to="/register">
-                    <Button id="link-to-register-button">Register now</Button>
+                    <Button id="registerButton">Register now</Button>
                   </Link>
                 </div>
               </Card.Body>
@@ -114,11 +117,9 @@ export function LoginView(props) {
   );
 }
 
-LoginView.propTypes = {
-  user: PropTypes.shape({
-    Username: PropTypes.string.isRequired,
-    Password: PropTypes.string.isRequired,
-  }),
-};
+const mapDispatchToProps = (dispatch) => ({
+  handleSubmit: (username, password) =>
+    dispatch(handleSubmit(username, password)),
+});
 
-export default LoginView;
+export default connect(null, mapDispatchToProps)(LoginView);
