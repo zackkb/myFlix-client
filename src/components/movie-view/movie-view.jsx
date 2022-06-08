@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import "./movie-view.scss";
 
-import { Col, Row, Button, Badge } from "react-bootstrap";
+import { Button, Badge } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 export class MovieView extends React.Component {
@@ -53,7 +53,7 @@ export class MovieView extends React.Component {
         </div>
         <br></br>
         <div>
-          <span className="description">Released: {movie.Year}</span>
+          <span className="value">Released: {movie.Year}</span>
         </div>
         <br></br>
         <Link to={"/"}>

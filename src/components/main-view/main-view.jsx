@@ -19,13 +19,9 @@ import ProfileView from "../profile-view/profile-view";
 import { NavbarView } from "../navbar-view/navbar-view";
 
 class MainView extends React.Component {
-  //constructor() {
-  //super();
-  //this.state = {
-  //  movies: [],
-  //  user: null,
-  // };
-  // }
+  constructor() {
+    super();
+  }
 
   getMovies(token) {
     axios
